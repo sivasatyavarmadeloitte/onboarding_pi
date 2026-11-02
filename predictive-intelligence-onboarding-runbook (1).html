@@ -1,0 +1,1075 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta name='description' content='Predictive Intelligence onboarding runbook for Deloitte.'>
+  <title>Predictive Intelligence Onboarding Runbook | Deloitte</title>
+  <style>
+    :root {
+      --ink: #14212b;
+      --muted: #52606d;
+      --deep: #0b2438;
+      --deep-alt: #15374e;
+      --green: #86bc25;
+      --pale-green: #eff6df;
+      --link: #005f83;
+      --line: #cbd5dc;
+      --soft: #f5f7f8;
+      --paper: #ffffff;
+      --shadow: 0 10px 28px rgba(20, 33, 43, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      color-scheme: light;
+      background: #e7ebed;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #e7ebed;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--link);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.15em;
+      overflow-wrap: anywhere;
+    }
+
+    a:hover {
+      color: #003e57;
+    }
+
+    a:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid #165a83;
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 10;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.7rem 0.9rem;
+      color: #ffffff;
+      background: var(--deep);
+      border-radius: 0.25rem;
+      transform: translateY(-180%);
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .page-shell {
+      width: min(100%, 1140px);
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    .masthead {
+      padding: clamp(2rem, 5vw, 4rem);
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--deep) 0%, var(--deep-alt) 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-line {
+      display: block;
+      width: 4.5rem;
+      height: 0.4rem;
+      margin-bottom: 1.35rem;
+      background: var(--green);
+    }
+
+    .eyebrow,
+    .section-eyebrow {
+      margin: 0 0 0.65rem;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      color: #d9efad;
+    }
+
+    .masthead h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(2.25rem, 5.5vw, 4.25rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    .masthead h1 span {
+      display: block;
+      color: #cfe99a;
+    }
+
+    .lead {
+      max-width: 650px;
+      margin: 1.35rem 0 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.12rem;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.28);
+      font-size: 0.9rem;
+    }
+
+    .header-label {
+      color: #d9efad;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+
+    main {
+      margin-top: 1.75rem;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .overview-card,
+    .prerequisite-card,
+    .workflow-item,
+    .completion-item {
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .overview-card {
+      padding: 1.45rem 1.5rem;
+      border-top: 4px solid var(--deep);
+    }
+
+    .overview-card h2,
+    .working-note h2,
+    .section-heading h2 {
+      margin: 0;
+      color: var(--deep);
+      font-size: 1.38rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .overview-card p,
+    .working-note p,
+    .section-heading p,
+    .prerequisite-card p,
+    .notice p {
+      margin: 0.65rem 0 0;
+    }
+
+    .working-note {
+      grid-column: 1 / -1;
+      padding: 1.3rem 1.5rem;
+      background: var(--pale-green);
+      border-left: 0.45rem solid var(--green);
+    }
+
+    .section {
+      margin-top: 2.75rem;
+    }
+
+    .section-heading {
+      max-width: 800px;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-eyebrow {
+      color: #4d700f;
+    }
+
+    .section-heading p:not(.section-eyebrow) {
+      color: var(--muted);
+    }
+
+    .prerequisite-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .prerequisite-card {
+      padding: 1.45rem 1.5rem;
+      border-top: 4px solid var(--green);
+    }
+
+    .prerequisite-card h3,
+    .notice h3 {
+      margin: 0;
+      color: var(--deep);
+      font-size: 1.05rem;
+      line-height: 1.3;
+    }
+
+    .clean-list {
+      margin: 0.85rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .clean-list li {
+      position: relative;
+      margin: 0.6rem 0;
+      padding-left: 1.2rem;
+    }
+
+    .clean-list li::before {
+      position: absolute;
+      top: 0.1rem;
+      left: 0;
+      color: #52780f;
+      content: '•';
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .notice {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.15rem;
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--pale-green);
+      border-left: 0.4rem solid var(--green);
+    }
+
+    .notice p {
+      color: #243612;
+    }
+
+    .workflow-list {
+      display: grid;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .workflow-item {
+      display: grid;
+      grid-template-columns: 3.5rem minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1.35rem 1.45rem;
+      border-left: 4px solid var(--green);
+    }
+
+    .step-number {
+      display: grid;
+      width: 2.65rem;
+      height: 2.65rem;
+      place-items: center;
+      color: #ffffff;
+      background: var(--deep);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .workflow-content {
+      min-width: 0;
+    }
+
+    .checkline {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.72rem;
+    }
+
+    input[type=checkbox] {
+      width: 1.15rem;
+      height: 1.15rem;
+      margin: 0.18rem 0 0;
+      flex: 0 0 auto;
+      accent-color: var(--deep);
+      cursor: pointer;
+    }
+
+    .checkline label,
+    .completion-item label {
+      color: var(--deep);
+      font-weight: 800;
+      line-height: 1.35;
+      cursor: pointer;
+    }
+
+    .workflow-description {
+      margin: 0.65rem 0 0 1.87rem;
+    }
+
+    .route-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.7rem;
+      margin: 0.85rem 0 0 1.87rem;
+      padding: 0.7rem 0.85rem;
+      color: #243612;
+      background: var(--pale-green);
+      border-left: 0.25rem solid var(--green);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .route-label,
+    .not-specified {
+      font-weight: 700;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    caption {
+      padding: 0.95rem 1.15rem;
+      color: var(--deep);
+      background: var(--soft);
+      caption-side: top;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    th,
+    td {
+      padding: 1rem 1.05rem;
+      vertical-align: top;
+    }
+
+    thead th {
+      color: #ffffff;
+      background: var(--deep);
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+    }
+
+    tbody th {
+      color: var(--deep);
+      font-weight: 800;
+    }
+
+    tbody tr + tr th,
+    tbody tr + tr td {
+      border-top: 1px solid var(--line);
+    }
+
+    .owner-table th:first-child {
+      width: 28%;
+    }
+
+    .owner-table th:nth-child(2) {
+      width: 37%;
+    }
+
+    .status-table {
+      min-width: 860px;
+    }
+
+    .status-table th:first-child {
+      width: 30%;
+    }
+
+    .status-table th:nth-child(2) {
+      width: 24%;
+    }
+
+    .status-input {
+      display: block;
+      width: 100%;
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid #9eacb5;
+      border-radius: 0.2rem;
+      font: inherit;
+    }
+
+    input.status-input {
+      height: 2.55rem;
+      padding: 0.45rem 0.55rem;
+    }
+
+    textarea.status-input {
+      min-height: 3.15rem;
+      padding: 0.45rem 0.55rem;
+      resize: vertical;
+    }
+
+    .completion-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .completion-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem 1.05rem;
+      border-top: 3px solid var(--green);
+    }
+
+    .completion-item input {
+      margin-top: 0.1rem;
+    }
+
+    .document-footer {
+      margin-top: 2.75rem;
+      padding: 1rem 1.25rem;
+      color: #243612;
+      background: var(--pale-green);
+      border-top: 3px solid var(--green);
+      font-size: 0.92rem;
+    }
+
+    .document-footer p {
+      margin: 0;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 720px) {
+      .page-shell {
+        padding: 1rem;
+      }
+
+      .masthead {
+        padding: 1.65rem;
+      }
+
+      .overview-grid,
+      .prerequisite-grid,
+      .completion-list {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow-item {
+        grid-template-columns: 2.8rem minmax(0, 1fr);
+        padding: 1.1rem;
+      }
+
+      .workflow-description,
+      .route-note {
+        margin-left: 0;
+      }
+
+      .route-note {
+        flex-direction: column;
+      }
+    }
+
+    @page {
+      margin: 14mm 13mm 16mm;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      html,
+      body {
+        background: #ffffff;
+      }
+
+      body {
+        color: #111820;
+        font-size: 9.25pt;
+        line-height: 1.4;
+      }
+
+      .skip-link {
+        display: none;
+      }
+
+      .page-shell {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .masthead {
+        padding: 7mm 8mm;
+        color: var(--ink);
+        background: #ffffff;
+        border: 1px solid #324a5d;
+        box-shadow: none;
+      }
+
+      .brand-line {
+        width: 26mm;
+        height: 2.5mm;
+        margin-bottom: 4mm;
+      }
+
+      .eyebrow,
+      .header-label,
+      .masthead h1 span {
+        color: #4d700f;
+      }
+
+      .masthead h1 {
+        color: var(--deep);
+        font-size: 26pt;
+      }
+
+      .lead,
+      .header-meta {
+        color: #34434e;
+      }
+
+      .header-meta {
+        margin-top: 5mm;
+        padding-top: 3mm;
+        border-top-color: #9eacb5;
+      }
+
+      main {
+        margin-top: 6mm;
+      }
+
+      .section {
+        margin-top: 7mm;
+      }
+
+      .section-heading {
+        margin-bottom: 4mm;
+      }
+
+      .overview-grid,
+      .prerequisite-grid {
+        gap: 4mm;
+      }
+
+      .overview-card,
+      .prerequisite-card,
+      .workflow-item,
+      .completion-item,
+      .table-wrap {
+        box-shadow: none;
+      }
+
+      .overview-card,
+      .prerequisite-card {
+        padding: 4mm;
+      }
+
+      .working-note,
+      .notice {
+        padding: 3.5mm 4mm;
+      }
+
+      .workflow-list {
+        gap: 3mm;
+      }
+
+      .workflow-item {
+        grid-template-columns: 10mm minmax(0, 1fr);
+        gap: 3.5mm;
+        padding: 4mm;
+      }
+
+      .step-number {
+        width: 8mm;
+        height: 8mm;
+        font-size: 7.5pt;
+      }
+
+      input[type=checkbox] {
+        width: 4mm;
+        height: 4mm;
+      }
+
+      .workflow-description,
+      .route-note {
+        margin-left: 5mm;
+      }
+
+      .route-note {
+        margin-top: 2.5mm;
+        padding: 2.2mm 2.8mm;
+        font-size: 8.5pt;
+      }
+
+      .table-wrap {
+        overflow: visible;
+      }
+
+      table,
+      .status-table {
+        min-width: 0;
+      }
+
+      caption {
+        padding: 2.5mm 3mm;
+        font-size: 8pt;
+      }
+
+      th,
+      td {
+        padding: 2.4mm 2.7mm;
+      }
+
+      thead th {
+        font-size: 7.9pt;
+      }
+
+      .status-table {
+        font-size: 8.3pt;
+      }
+
+      input.status-input {
+        height: 8.5mm;
+      }
+
+      textarea.status-input {
+        min-height: 10.5mm;
+        resize: none;
+      }
+
+      .completion-list {
+        gap: 3mm;
+      }
+
+      .completion-item {
+        padding: 3.2mm;
+      }
+
+      .document-footer {
+        margin-top: 7mm;
+        padding: 3mm 4mm;
+      }
+
+      .print-page {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      .section-heading,
+      .overview-card,
+      .prerequisite-card,
+      .working-note,
+      .notice,
+      .workflow-item,
+      .completion-item,
+      .document-footer,
+      tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section-heading {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      thead {
+        display: table-header-group;
+      }
+
+      a {
+        color: #00506f;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class='skip-link' href='#main-content'>Skip to runbook content</a>
+
+  <div class='page-shell'>
+    <header class='masthead'>
+      <span class='brand-line' aria-hidden='true'></span>
+      <p class='eyebrow'>Deloitte project · Predictive Intelligence</p>
+      <h1>Predictive Intelligence <span>Onboarding Runbook</span></h1>
+      <p class='lead'>A formal access and sign-in guide for the Deloitte Predictive Intelligence project.</p>
+      <div class='header-meta' aria-label='Runbook focus'>
+        <span class='header-label'>Runbook focus</span>
+        <span>Access requests, sign-in actions, and status recording</span>
+      </div>
+    </header>
+
+    <main id='main-content'>
+      <section class='overview-grid' aria-label='Runbook overview'>
+        <article class='overview-card'>
+          <h2>Purpose</h2>
+          <p>Use this runbook to organize the supplied onboarding access and sign-in actions for the Deloitte Predictive Intelligence project.</p>
+        </article>
+
+        <article class='overview-card'>
+          <h2>Intended audience</h2>
+          <p>People onboarding to the Deloitte Predictive Intelligence project who need to complete the listed actions.</p>
+        </article>
+
+        <aside class='working-note' role='note'>
+          <h2>Request and contact note</h2>
+          <p>For any request or contact method not specified in this runbook, <strong>Confirm with project lead.</strong></p>
+        </aside>
+      </section>
+
+      <section class='section' aria-labelledby='prerequisites-title'>
+        <div class='section-heading'>
+          <p class='section-eyebrow'>Setup foundation</p>
+          <h2 id='prerequisites-title'>Access prerequisites</h2>
+          <p>Items identified in the onboarding details are listed below.</p>
+        </div>
+
+        <div class='prerequisite-grid'>
+          <article class='prerequisite-card'>
+            <h3>Okta Verify sign-in</h3>
+            <ul class='clean-list'>
+              <li>Install Okta Verify on your mobile device.</li>
+              <li>Sign in to Okta Verify using Deloitte credentials.</li>
+            </ul>
+          </article>
+
+          <article class='prerequisite-card'>
+            <h3>Provided access links</h3>
+            <ul class='clean-list'>
+              <li><a class='url-link' href='https://engineeringplatforms.deloitte.com/github-enterprise' target='_blank' rel='noopener noreferrer'>GitHub Enterprise — https://engineeringplatforms.deloitte.com/github-enterprise</a></li>
+              <li><a class='url-link' href='https://deloittecms.digitalidentityservice.com/app/UserHome' target='_blank' rel='noopener noreferrer'>Deloitte CMS — https://deloittecms.digitalidentityservice.com/app/UserHome</a></li>
+            </ul>
+          </article>
+        </div>
+
+        <aside class='notice' role='note'>
+          <h3>When a request or contact method is not specified</h3>
+          <p><strong>Confirm with project lead.</strong></p>
+        </aside>
+      </section>
+
+      <section class='section' aria-labelledby='sequence-title'>
+        <div class='section-heading'>
+          <p class='section-eyebrow'>Action checklist</p>
+          <h2 id='sequence-title'>Onboarding sequence</h2>
+          <p>Work through the supplied actions and use the checkbox at each step to track progress.</p>
+        </div>
+
+        <ol class='workflow-list'>
+          <li class='workflow-item'>
+            <div class='step-number' aria-hidden='true'>01</div>
+            <div class='workflow-content'>
+              <div class='checkline'>
+                <input type='checkbox' id='step-teams'>
+                <label for='step-teams'>Request WDT Predictive Intelligence Teams channel access</label>
+              </div>
+              <p class='workflow-description'>Request access to the WDT Predictive Intelligence Teams channel for project details and documents.</p>
+              <div class='route-note' role='note'>
+                <span class='route-label'>Request/contact method not specified</span>
+                <strong>Confirm with project lead.</strong>
+              </div>
+            </div>
+          </li>
+
+          <li class='workflow-item'>
+            <div class='step-number' aria-hidden='true'>02</div>
+            <div class='workflow-content'>
+              <div class='checkline'>
+                <input type='checkbox' id='step-github'>
+                <label for='step-github'>Request GitHub Enterprise access</label>
+              </div>
+              <p class='workflow-description'>Request access to GitHub Enterprise using the provided URL: <a class='url-link' href='https://engineeringplatforms.deloitte.com/github-enterprise' target='_blank' rel='noopener noreferrer'>https://engineeringplatforms.deloitte.com/github-enterprise</a>.</p>
+              <div class='route-note' role='note'>
+                <span class='route-label'>Additional access-request/contact method not specified</span>
+                <strong>Confirm with project lead.</strong>
+              </div>
+            </div>
+          </li>
+
+          <li class='workflow-item'>
+            <div class='step-number' aria-hidden='true'>03</div>
+            <div class='workflow-content'>
+              <div class='checkline'>
+                <input type='checkbox' id='step-ai-tools'>
+                <label for='step-ai-tools'>Request Claude Code and Copilot access</label>
+              </div>
+              <p class='workflow-description'>Request access to Claude Code and Copilot from Natalie Lorati.</p>
+              <div class='route-note' role='note'>
+                <span class='route-label'>Contact method not specified</span>
+                <strong>Confirm with project lead.</strong>
+              </div>
+            </div>
+          </li>
+
+          <li class='workflow-item'>
+            <div class='step-number' aria-hidden='true'>04</div>
+            <div class='workflow-content'>
+              <div class='checkline'>
+                <input type='checkbox' id='step-okta'>
+                <label for='step-okta'>Install and sign in to Okta Verify</label>
+              </div>
+              <p class='workflow-description'>Install Okta Verify on your mobile device and sign in using Deloitte credentials.</p>
+              <div class='route-note' role='note'>
+                <span class='route-label'>Support/contact method not specified</span>
+                <strong>Confirm with project lead.</strong>
+              </div>
+            </div>
+          </li>
+
+          <li class='workflow-item'>
+            <div class='step-number' aria-hidden='true'>05</div>
+            <div class='workflow-content'>
+              <div class='checkline'>
+                <input type='checkbox' id='step-cms'>
+                <label for='step-cms'>Sign in to Deloitte CMS</label>
+              </div>
+              <p class='workflow-description'>Sign in to Deloitte CMS for ServiceNow and other environment access using the provided URL: <a class='url-link' href='https://deloittecms.digitalidentityservice.com/app/UserHome' target='_blank' rel='noopener noreferrer'>https://deloittecms.digitalidentityservice.com/app/UserHome</a>.</p>
+              <div class='route-note' role='note'>
+                <span class='route-label'>Access-request/contact method not specified</span>
+                <strong>Confirm with project lead.</strong>
+              </div>
+            </div>
+          </li>
+
+          <li class='workflow-item'>
+            <div class='step-number' aria-hidden='true'>06</div>
+            <div class='workflow-content'>
+              <div class='checkline'>
+                <input type='checkbox' id='step-cloud'>
+                <label for='step-cloud'>Request cloud environment and PI-related tool access</label>
+              </div>
+              <p class='workflow-description'>Request access to cloud environments such as AWS, Databricks, and other tools needed for PI-related work from Manikandan Elangovan and Deepak Basnet.</p>
+              <div class='route-note' role='note'>
+                <span class='route-label'>Contact method not specified</span>
+                <strong>Confirm with project lead.</strong>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class='section' aria-labelledby='owners-title'>
+        <div class='section-heading'>
+          <p class='section-eyebrow'>Reference</p>
+          <h2 id='owners-title'>Escalation and owner details</h2>
+          <p>Named contacts and destinations supplied for onboarding are shown below.</p>
+        </div>
+
+        <aside class='notice' role='note'>
+          <h3>Escalation route</h3>
+          <p>For an escalation or any request/contact method not specified here, <strong>Confirm with project lead.</strong></p>
+        </aside>
+
+        <div class='table-wrap'>
+          <table class='owner-table'>
+            <caption>Named contacts and destinations</caption>
+            <thead>
+              <tr>
+                <th scope='col'>Area</th>
+                <th scope='col'>Named contact or destination</th>
+                <th scope='col'>Request / contact method</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope='row'>Project details and documents</th>
+                <td>WDT Predictive Intelligence Teams channel</td>
+                <td><span class='not-specified'>Request/contact method not specified.</span><br><strong>Confirm with project lead.</strong></td>
+              </tr>
+              <tr>
+                <th scope='row'>GitHub Enterprise</th>
+                <td><a class='url-link' href='https://engineeringplatforms.deloitte.com/github-enterprise' target='_blank' rel='noopener noreferrer'>https://engineeringplatforms.deloitte.com/github-enterprise</a></td>
+                <td><span class='not-specified'>Additional access-request/contact method not specified.</span><br><strong>Confirm with project lead.</strong></td>
+              </tr>
+              <tr>
+                <th scope='row'>Claude Code and Copilot</th>
+                <td>Natalie Lorati</td>
+                <td><span class='not-specified'>Contact method not specified.</span><br><strong>Confirm with project lead.</strong></td>
+              </tr>
+              <tr>
+                <th scope='row'>Okta Verify</th>
+                <td>Not specified</td>
+                <td><span class='not-specified'>Contact method not specified.</span><br><strong>Confirm with project lead.</strong></td>
+              </tr>
+              <tr>
+                <th scope='row'>Deloitte CMS for ServiceNow and other environment access</th>
+                <td><a class='url-link' href='https://deloittecms.digitalidentityservice.com/app/UserHome' target='_blank' rel='noopener noreferrer'>https://deloittecms.digitalidentityservice.com/app/UserHome</a></td>
+                <td><span class='not-specified'>Access-request/contact method not specified.</span><br><strong>Confirm with project lead.</strong></td>
+              </tr>
+              <tr>
+                <th scope='row'>AWS, Databricks, and other PI-related tools</th>
+                <td>Manikandan Elangovan<br>Deepak Basnet</td>
+                <td><span class='not-specified'>Contact method not specified.</span><br><strong>Confirm with project lead.</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='section print-page' aria-labelledby='tracking-title'>
+        <div class='section-heading'>
+          <p class='section-eyebrow'>Working record</p>
+          <h2 id='tracking-title'>Access status and notes</h2>
+          <p>Use the blank fields below to record access status and notes. No access status or notes are pre-filled.</p>
+        </div>
+
+        <div class='table-wrap'>
+          <table class='status-table'>
+            <caption>Blank access record</caption>
+            <thead>
+              <tr>
+                <th scope='col'>Access or action</th>
+                <th scope='col'>Status</th>
+                <th scope='col'>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope='row'>WDT Predictive Intelligence Teams channel</th>
+                <td><label class='sr-only' for='status-teams'>Status for WDT Predictive Intelligence Teams channel</label><input class='status-input' id='status-teams' type='text'></td>
+                <td><label class='sr-only' for='notes-teams'>Notes for WDT Predictive Intelligence Teams channel</label><textarea class='status-input' id='notes-teams'></textarea></td>
+              </tr>
+              <tr>
+                <th scope='row'>GitHub Enterprise</th>
+                <td><label class='sr-only' for='status-github'>Status for GitHub Enterprise</label><input class='status-input' id='status-github' type='text'></td>
+                <td><label class='sr-only' for='notes-github'>Notes for GitHub Enterprise</label><textarea class='status-input' id='notes-github'></textarea></td>
+              </tr>
+              <tr>
+                <th scope='row'>Claude Code</th>
+                <td><label class='sr-only' for='status-claude'>Status for Claude Code</label><input class='status-input' id='status-claude' type='text'></td>
+                <td><label class='sr-only' for='notes-claude'>Notes for Claude Code</label><textarea class='status-input' id='notes-claude'></textarea></td>
+              </tr>
+              <tr>
+                <th scope='row'>Copilot</th>
+                <td><label class='sr-only' for='status-copilot'>Status for Copilot</label><input class='status-input' id='status-copilot' type='text'></td>
+                <td><label class='sr-only' for='notes-copilot'>Notes for Copilot</label><textarea class='status-input' id='notes-copilot'></textarea></td>
+              </tr>
+              <tr>
+                <th scope='row'>Okta Verify</th>
+                <td><label class='sr-only' for='status-okta'>Status for Okta Verify</label><input class='status-input' id='status-okta' type='text'></td>
+                <td><label class='sr-only' for='notes-okta'>Notes for Okta Verify</label><textarea class='status-input' id='notes-okta'></textarea></td>
+              </tr>
+              <tr>
+                <th scope='row'>Deloitte CMS for ServiceNow and other environment access</th>
+                <td><label class='sr-only' for='status-cms'>Status for Deloitte CMS</label><input class='status-input' id='status-cms' type='text'></td>
+                <td><label class='sr-only' for='notes-cms'>Notes for Deloitte CMS</label><textarea class='status-input' id='notes-cms'></textarea></td>
+              </tr>
+              <tr>
+                <th scope='row'>AWS</th>
+                <td><label class='sr-only' for='status-aws'>Status for AWS</label><input class='status-input' id='status-aws' type='text'></td>
+                <td><label class='sr-only' for='notes-aws'>Notes for AWS</label><textarea class='status-input' id='notes-aws'></textarea></td>
+              </tr>
+              <tr>
+                <th scope='row'>Databricks</th>
+                <td><label class='sr-only' for='status-databricks'>Status for Databricks</label><input class='status-input' id='status-databricks' type='text'></td>
+                <td><label class='sr-only' for='notes-databricks'>Notes for Databricks</label><textarea class='status-input' id='notes-databricks'></textarea></td>
+              </tr>
+              <tr>
+                <th scope='row'>Other PI-related tools</th>
+                <td><label class='sr-only' for='status-other-tools'>Status for other PI-related tools</label><input class='status-input' id='status-other-tools' type='text'></td>
+                <td><label class='sr-only' for='notes-other-tools'>Notes for other PI-related tools</label><textarea class='status-input' id='notes-other-tools'></textarea></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='section print-page' aria-labelledby='completion-title'>
+        <div class='section-heading'>
+          <p class='section-eyebrow'>Final review</p>
+          <h2 id='completion-title'>Completion checklist</h2>
+          <p>Use this checklist to confirm each supplied onboarding action has been addressed and the record above is updated.</p>
+        </div>
+
+        <ul class='completion-list'>
+          <li class='completion-item'>
+            <input type='checkbox' id='completion-teams'>
+            <label for='completion-teams'>WDT Predictive Intelligence Teams channel access request is recorded.</label>
+          </li>
+          <li class='completion-item'>
+            <input type='checkbox' id='completion-github'>
+            <label for='completion-github'>GitHub Enterprise access request is recorded using the provided URL.</label>
+          </li>
+          <li class='completion-item'>
+            <input type='checkbox' id='completion-ai-tools'>
+            <label for='completion-ai-tools'>An access request for Claude Code and Copilot has been made to Natalie Lorati.</label>
+          </li>
+          <li class='completion-item'>
+            <input type='checkbox' id='completion-okta'>
+            <label for='completion-okta'>Okta Verify is installed on a mobile device, and sign-in uses Deloitte credentials.</label>
+          </li>
+          <li class='completion-item'>
+            <input type='checkbox' id='completion-cms'>
+            <label for='completion-cms'>Deloitte CMS sign-in has been completed using the provided URL for ServiceNow and other environment access.</label>
+          </li>
+          <li class='completion-item'>
+            <input type='checkbox' id='completion-cloud'>
+            <label for='completion-cloud'>Cloud environment access requests for AWS, Databricks, and other tools needed for PI-related work have been made to Manikandan Elangovan and Deepak Basnet.</label>
+          </li>
+          <li class='completion-item'>
+            <input type='checkbox' id='completion-record'>
+            <label for='completion-record'>Access status and notes are recorded in the blank fields above.</label>
+          </li>
+          <li class='completion-item'>
+            <input type='checkbox' id='completion-confirm'>
+            <label for='completion-confirm'>Any request/contact method not specified is confirmed with project lead.</label>
+          </li>
+        </ul>
+
+        <aside class='notice' role='note'>
+          <h3>Unspecified methods</h3>
+          <p><strong>Confirm with project lead.</strong></p>
+        </aside>
+      </section>
+    </main>
+
+    <footer class='document-footer'>
+      <p><strong>Print / PDF:</strong> Use your browser’s Print &gt; Save as PDF function to create the requested PDF.</p>
+    </footer>
+  </div>
+</body>
+</html>
